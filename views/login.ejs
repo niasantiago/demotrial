@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'><link rel="stylesheet" href="./css/login.css">
+
+</head>
+<body>
+
+
+<div class="cont">
+  <!-- sign in page -->
+  <div class="form sign-in">
+      <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+      <div class="alert alert-danger"><%= el.msg %></div>
+      <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+      messages.info.forEach( el => { %>
+      <div class="alert alert-info"><%= el.msg %></div>
+      <% }) %> <% } %>
+    <form action="/login" method="post">
+    <h2>Welcome back,</h2>
+    <label>
+      <span>Email</span>
+      <input type="email" name="email" />
+    </label>
+    <label>
+      <span>Password</span>
+      <input type="password" name="password" />
+    </label>
+    <button type="submit" class="submit">Sign In</button>
+    </form>
+  </div>
+
+  <div class="sub-cont">
+    <div class="img">
+      <div class="img__text m--up">
+        <h2>New here?</h2>
+        <p>Sign up and discover great amount of new opportunities!</p>
+      </div>
+      <div class="img__text m--in">
+        <h2>One of us?</h2>
+        <p>If you already has an account, just sign in. We've missed you!</p>
+      </div>
+      <div class="img__btn">
+        <span class="m--up">Sign Up</span>
+        <span class="m--in">Sign In</span>
+      </div>
+    </div>
+
+    <!-- sign up page -->
+    <div class="form sign-up">
+          <% if (locals.messages.errors) { %>
+                    <% messages.errors.forEach( el => { %>
+                        <div class="alert alert-danger"><%= el.msg %></div>
+                    <% }) %>    
+                <% } %>
+                <% if (locals.messages.info) { %>
+                    <% messages.info.forEach( el => { %>
+                        <div class="alert alert-info"><%= el.msg %></div>
+                    <% }) %>    
+                <% } %>
+        <form action="/signup" method="post">
+      <h2>Time to feel like home,</h2>
+        <label>
+        <span>User Name</span>
+        <input type="text" name="userName"/>
+      </label>
+      <label>
+        <span>Email</span>
+        <input type="email" name="email"/>
+      </label>
+      <label>
+        <span>Account Type</span>
+        <select name="accountType">
+          <option value="business">Business</option>
+          <option value="customer">Customer</option>
+        </select>
+      </label>
+      <label>
+        <span>Password</span>
+        <input type="password" name="password" />
+      </label>
+        <label>Confirm Password
+         <input type="password" name="confirmPassword">
+         </label>
+      <button type="submit" class="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+ <script  src="./js/login.js"></script>
+
+</body>
+</html>
+
+<%- include('partials/footer') -%>

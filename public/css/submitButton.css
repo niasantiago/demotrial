@@ -1,0 +1,79 @@
+.submitBtn {
+  position: absolute;
+}
+
+.btn-send {
+  background: #34bbe2;
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 0;
+  transition: 1s ease all;
+}
+.btn-send:focus, .btn-send:active {
+  outline: none;
+}
+.btn-send:before {
+  content: attr(data-label);
+  color: white;
+  transition: 3s ease all;
+}
+.btn-send:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 3px solid transparent;
+  border-radius: 100%;
+  transition: 0.2s ease all;
+}
+.btn-send.loading {
+  background: white;
+  width: 50px;
+}
+.btn-send.loading:before {
+  transform: scale(0.5);
+  opacity: 0;
+}
+.btn-send.loading:after {
+  transform: scale(1);
+  opacity: 1;
+  border-left-color: #34bbe2;
+  animation: rotating 1s 0.15s linear infinite;
+}
+.btn-send.success {
+  background: transparent;
+  width: 50px;
+}
+.btn-send.success:before {
+  font-family: "Fontawesome";
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 3px solid #34bbe2;
+  color: #34bbe2;
+  border-radius: 100%;
+  line-height: 50px;
+}
+.btn-send.success:after {
+  transform: scale(0.5);
+  opacity: 0;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

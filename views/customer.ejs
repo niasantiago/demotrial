@@ -1,0 +1,196 @@
+ <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./css/profile.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
+    <link rel="stylesheet" href="./css/submitButton.css" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'>
+
+  </head>
+  <html>
+  <body>
+    <!-- pop up modal -->
+    <div id="popup2" class="overlay light">
+	<a class="cancel" href="#"></a>
+	<div class="popup">
+		<h2>Review a business</h2>
+		<div class="content">
+                     <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+              <div class="mb-3">
+                  <label for="title" class="form-label">Subject</label>
+                  <input type="text" class="form-control" id="subject" name="title">
+              </div>
+              <div class="mb-3">
+                <label for="rating" class="form-label">Rating</label>
+              <select name="rating">
+                  <option value="1">1 star</option>
+                  <option value="2">2 stars</option>
+                  <option value="3">3 stars</option>
+                  <option value="4">4 stars</option>
+                  <option value="5">5 stars</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="caption" class="form-label">Description</label>
+                <textarea class="form-control" id="caption" name="description"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="imgUpload" class="form-label">Image</label>
+                <input type="file" class="form-control" id="imageUpload" name="file">
+              </div>
+              <div class="mb-3">
+                <label for="business" class="form-label">Business</label>
+                <select name="business">
+                  <% businesses.forEach((business) => { %>
+                    <% const businessData = JSON.stringify({id: business._id, name: business.userName}) %>
+                    <option value="<%= businessData %>"><%=business.userName %></option>
+                  <% }) %>
+                  </select>
+              </div>
+              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+            </form>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+   <div class="profile-header">
+        <div class="profile-img">
+               <img src="./bg.jpg" width="200" alt="Profile Image" />
+             <div class="circle" style="background: #<%=user.iconColor %>">
+                 <span><%=user.userName.split("")[0].toUpperCase() %></span>
+             </div>
+        </div>
+        <div class="profile-nav-info">
+          <h3 class="user-name"><%=user.email %></h3>
+          <div class="address">
+            <!-- <p id="state" class="state">New York,</p>
+        <span id="country" class="country">USA.</span> -->
+          </div>
+        </div>
+   </div>
+    <div class="main-bd">
+        <div class="left-side">
+          <div class="profile-side">
+            <div class="user-bio">
+              <span><%=user.userName %></span>
+              <h3>Your Bio</h3>
+              <p class="bio">
+                Lorem ipsum dolor sit amet, hello how consectetur adipisicing
+                elit. Sint consectetur provident magni yohoho consequuntur,
+                voluptatibus ghdfff exercitationem at quis similique. Optio,
+                amet!
+              </p>
+            </div>
+            <div class="profile-btn">
+              <a class="button" href="#popup2">
+              <button class="createbtn" id="five">
+                REVIEW A PAGE
+              </button>
+              </a>
+            </div>
+             <div class="profile-btn">
+              <a class="button" href="/logout">
+              <button class="createbtn" id="five">
+                LOGOUT
+              </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="right-side">
+          <div class="nav">
+            <ul>
+              <li onclick="tabs(0)" class="user-post active" id="newsfeed">
+                Newsfeed
+              </li>
+              <li onclick="tabs(2)" class="user-setting">Recommendations</li>
+            </ul>
+          </div>
+          <!-- this is where we loop through all the reviews -->
+          <div class="profile-body">
+            <div class="profile-posts tab">
+              <div class="posts">
+                <% for(let i = 0; i < allReviews.length; i++){%>
+                <div class="post">
+                      <a href="/post/<%= allReviews[i]._id%>">
+                  <img class="img-fluid" src="<%= allReviews[i].image%>">
+                     </a>
+                     <div class="postRow">
+                 <h4><a><%= allReviews[i].business %></a></h4>
+                  <span>Review by: <%= allReviews[i].userName %></span>
+                  <span><%= allReviews[i].description %></span>
+                   <form
+          action="/post/likePostInNewsfeed/<%= allReviews[i].id %>?_method=PUT"
+          method="POST"
+        >
+             <button value="<%=allReviews[i]._id%>" class="like" type="submit">❤️   
+              <span><%= allReviews[i].likes %></span>
+            </button>
+        </form>
+                      </div>
+                      <% if(allReviews[i].userName == user.userName){ %>
+                       <form
+          action="/post/deletePost/<%= allReviews[i].id %>?_method=DELETE"
+          method="POST">
+                      <button class="like" type="submit">🗑️</button>
+                         </form>
+                           <% } %>
+                </div>
+                <% }%>
+              </div>
+            </div>
+            <div class="profile-settings tab">
+              <div class="account-setting">
+
+                <h2>Tell us about your hair</h2>
+                <form action="/post/createRec" method="post">
+                  <label for="hair">Choose your Hair Type</label>
+                  <select name="hair">
+                    <option>Curly (Type 2A)</option>
+                    <option>Curly (Type 2B)</option>
+                    <option>Curly (Type 2C)</option>
+                    <option>Curly (Type 3A)</option>
+                    <option>Curly (Type 3B)</option>
+                    <option>Curly (Type 3C)</option>
+                    <option>Curly (Type 4A)</option>
+                    <option>Curly (Type 4B)</option>
+                    <option>Curly (Type 4C)</option>
+                    <label for="problems">Problems</label>
+                  </select>
+                  <select name="problems" multiple>
+                    <option>Dry Hair</option>
+                    <option>Tangled Hair</option>
+                    <option>Split Ends</option>
+                    <option>Alopecia</option>
+                  </select>
+                  <label for="goals">Goals</label>
+                  <select name="goals" multiple>
+                    <option>Hair Growth</option>
+                    <option>Healthy Ends</option>
+                    <option>Moisture</option>
+                    <option>Volume</option>
+                  </select>
+                  <div class="submitBtn">
+  <button type="submit" class="btn-send" data-label="Send" data-success="Sent!"></button>  
+</div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+         
+      
+  
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/profile.js"></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+      <script  src="js/submitButton.js"></script>
+</body>
+</html>
