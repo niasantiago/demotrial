@@ -2,8 +2,7 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Rec = require("../models/Rec");
 const User = require("../models/User");
-const { getRecommendations } = require("../helpers/openai.js");
-// const { post } = require("../routes/posts");
+const { getRecommendations } = require("../helpers/openai.js")
 
 module.exports = {
   getProfile: async (req, res) => {

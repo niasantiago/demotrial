@@ -35,9 +35,9 @@ document.querySelectorAll(".nav ul li").forEach(function(item) {
     });
   });
 });
-
+// tabs newsfeed and recc
 const tabBtn = document.querySelectorAll(".nav ul li");
-const tab = document.querySelectorAll(".tab");
+const tab = document.querySelectorAll(".tab"); // 2 elements only 
 
 function tabs(panelIndex) {
   tab.forEach(function(node) {
@@ -46,6 +46,8 @@ function tabs(panelIndex) {
   tab[panelIndex].style.display = "flex";
 }
 tabs(0);
+
+
 
 function bioText() {
   bio.oldText = bio.innerText;
