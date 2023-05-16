@@ -3,7 +3,7 @@ const Post = require("../models/Post");
 const Rec = require("../models/Rec");
 const User = require("../models/User");
 const { getRecommendations } = require("../helpers/openai.js");
-const { post } = require("../routes/posts");
+// const { post } = require("../routes/posts");
 
 module.exports = {
   getProfile: async (req, res) => {
