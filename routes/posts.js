@@ -11,6 +11,8 @@ router.get("/:id", ensureAuth, postsController.getPost);
 
 router.post("/createPost", upload.single("file"), postsController.createReview);
 router.post("/createRec", postsController.createRec);
+router.post("/comments", postsController.createComment);
+
 
 router.put("/likePost/:id", postsController.likePost);
 router.put("/likePostInNewsfeed/:id", postsController.likePostInNewsfeed);

@@ -12,6 +12,9 @@ router.get("/business", ensureAuth, postsController.getBusinessProfile);
 router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);
 router.get("/logout", authController.logout);
-router.post("/signup", authController.postSignup);
+router.post("/signup", authController.postSignup); 
+
+
 
 module.exports = router;
+

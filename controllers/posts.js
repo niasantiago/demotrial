@@ -2,6 +2,7 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Rec = require("../models/Rec");
 const User = require("../models/User");
+const Comments = require("../models/comment");
 const { getRecommendations } = require("../helpers/openai.js")
 
 module.exports = {
@@ -35,11 +36,30 @@ module.exports = {
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
+      const comments = await Comments.find({post:post._id}).populate('user');
+      res.render("post.ejs", { post: post, user: req.user, comments:comments }) ;
     } catch (err) {
       console.log(err);
     }
   }, 
+  createComment: async (req, res) => {
+    try {
+        console.log(req.body)
+      await Comments.create({
+        comment: req.body.comment,
+        post: req.body.postId,  
+        user: req.user.id,
+        createdAt: new Date().toLocaleDateString(),
+        userName: req.user.userName,
+      });
+      console.log("Comment has been added!");
+      res.redirect("/profile");
+    } catch (err) {
+      console.log(err);
+    }
+  }, 
+
+
   createReview: async (req, res) => {
     try {
       // Upload image to cloudinary
@@ -65,7 +85,8 @@ module.exports = {
     } catch (err) {
       console.log(err);
     }
-  },
+  }, 
+
   likePostInNewsfeed: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
