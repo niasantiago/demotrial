@@ -253,28 +253,38 @@ html, body {
           animation-delay: 0s;
 }
 .untitled__slide:nth-child(1) .untitled__slideBg {
-  background-image: url ("../imgs/firstpage1.png");
+  background-image: url(firstpage1.png);
+  background:contain; 
+  background-position: bottom;
 }
 .untitled__slide:nth-child(2) {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 }
 .untitled__slide:nth-child(2) .untitled__slideBg {
-  background-image: url ("../imgs/firstpage2.png");
+  background-image: url(firstpage2.png);
+  background:cover; 
+  background-position: top;
+  
+  
 }
 .untitled__slide:nth-child(3) {
   -webkit-animation-delay: 10s;
           animation-delay: 10s;
 }
 .untitled__slide:nth-child(3) .untitled__slideBg {
-  background-image: url(https://unsplash.it/g/1500/1000?image=1077);
+  background-image: url(firstpage3.png);
+  background-position: bottom;
+ 
+
 }
 .untitled__slide:nth-child(4) {
   -webkit-animation-delay: 15s;
           animation-delay: 15s;
 }
 .untitled__slide:nth-child(4) .untitled__slideBg {
-  background-image: url(https://unsplash.it/g/1500/1200?image=345);
+  background-image: url(firstpage4.png);
+  background-position: top;
 }
 .untitled__slideBg {
   position: relative;
