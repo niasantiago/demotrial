@@ -26,8 +26,14 @@ module.exports = {
       const myReviews = await Post.find({businessId: req.user._id});
       const allReviews = await Post.find();
       // ratings equals the medium or average number of each review's ratings
-      const ratings = myReviews.map((review) => review.rating)
-      const average = ratings.reduce((prev, curr) => prev + curr) / ratings.length
+      let average = 1
+      if (myReviews.length == 0){ 
+         average = 1
+      }
+      else {
+        const ratings = myReviews.map((review) => review.rating)
+         average = ratings.reduce((prev, curr) => prev + curr) / ratings.length
+      }
       res.render("business.ejs", { allReviews, user: req.user, myReviews, average });
     } catch (err) {
       console.log(err);
