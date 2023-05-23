@@ -92,19 +92,19 @@
               </button>
               </a>
             </div> 
-            <div class="mb-3">
+            <div class="mb-3"> 
               <label for="hair-filter" class="form-label">Filter page by hairtype</label>
               <select name="hair-filter" id="hair-filter-read">
                 <option value=""></option>
-                <option value="2A">Curly (Type 2A)</option>
-                <option value="2B">Curly (Type 2B)</option>
-                <option value="2C">Curly (Type 2C)</option>
-                <option value="3A">Curly (Type 3A)</option>
-                <option value="3B">Curly (Type 3B)</option>
-                <option value="3C">Curly (Type 3C)</option>
-                <option value="4A">Curly (Type 4A)</option>
-                <option value="4B">Curly (Type 4B)</option>
-                <option value="4C">Curly (Type 4C)</option>
+                <option <%= hairType === '2A' ? 'selected' : '' %> value="2A">Curly (Type 2A)</option>
+                <option <%= hairType === '2B' ? 'selected' : '' %> value="2B">Curly (Type 2B)</option>
+                <option <%= hairType === '2C' ? 'selected' : '' %> value="2C">Curly (Type 2C)</option>
+                <option <%= hairType === '3A' ? 'selected' : '' %> value="3A">Curly (Type 3A)</option>
+                <option <%= hairType === '3B' ? 'selected' : '' %> value="3B">Curly (Type 3B)</option>
+                <option <%= hairType === '3C' ? 'selected' : '' %> value="3C">Curly (Type 3C)</option>
+                <option <%= hairType === '4A' ? 'selected' : '' %> value="4A">Curly (Type 4A)</option>
+                <option <%= hairType === '4B' ? 'selected' : '' %> value="4B">Curly (Type 4B)</option>
+                <option <%= hairType === '4C' ? 'selected' : '' %> value="4C">Curly (Type 4C)</option>
             </select> 
             </div>
              <div class="profile-btn">

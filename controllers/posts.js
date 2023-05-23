@@ -21,7 +21,7 @@ module.exports = {
       
       const users = await User.find();
       const businesses = users.filter((user) => user.accountType === 'business');
-      res.render("customer.ejs", { allReviews, user: req.user, businesses });
+      res.render("customer.ejs", { allReviews, user: req.user, businesses, hairType:req.query.hairType });
     } catch (err) {
       console.log(err);
     }
