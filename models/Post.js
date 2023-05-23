@@ -41,7 +41,11 @@ const PostSchema = new mongoose.Schema({
   },
   rating: {
     type: Number,
-  }
+  },
+  hairType: {
+    type: String,
+  },
+  
 });
 
 module.exports = mongoose.model("Post", PostSchema);

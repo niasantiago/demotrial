@@ -49,14 +49,42 @@
                     <% const businessData = JSON.stringify({id: business._id, name: business.userName}) %>
                     <option value="<%= businessData %>"><%=business.userName %></option>
                   <% }) %>
-                  </select>
-              </div>
+                  </select> 
+              </div>   
+              <div class="mb-3">
+                <label for="hair-filter" class="form-label">Curl Type</label>
+                <select name="hairType" id="hair-filter">
+                  <option value="2A">Curly (Type 2A)</option>
+                  <option value="2B">Curly (Type 2B)</option>
+                  <option value="2C">Curly (Type 2C)</option>
+                  <option value="3A">Curly (Type 3A)</option>
+                  <option value="3B">Curly (Type 3B)</option>
+                  <option value="3C">Curly (Type 3C)</option>
+                  <option value="4A">Curly (Type 4A)</option>
+                  <option value="4B">Curly (Type 4B)</option>
+                  <option value="4C">Curly (Type 4C)</option>
+              </select> 
+            </div>
               <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
             </form>
 		</div>
 	</div>
 </div>
-
+  <div class="mb-3">
+    <label for="hair-filter" class="form-label">Curl Type</label>
+    <select name="hair-filter" id="hair-filter-read">
+      <option value=""></option>
+      <option value="2A">Curly (Type 2A)</option>
+      <option value="2B">Curly (Type 2B)</option>
+      <option value="2C">Curly (Type 2C)</option>
+      <option value="3A">Curly (Type 3A)</option>
+      <option value="3B">Curly (Type 3B)</option>
+      <option value="3C">Curly (Type 3C)</option>
+      <option value="4A">Curly (Type 4A)</option>
+      <option value="4B">Curly (Type 4B)</option>
+      <option value="4C">Curly (Type 4C)</option>
+  </select> 
+  </div>
 <div class="container">
    <div class="profile-header">
         <div class="profile-img">
@@ -115,34 +143,28 @@
           <div class="profile-body">
             <div class="profile-posts tab">
               <div class="posts">
-                <% for(let i = 0; i < allReviews.length; i++){%>
-                <div class="post">
-                      <a href="/post/<%= allReviews[i]._id%>">
-                  <img class="img-fluid" src="<%= allReviews[i].image%>">
-                     </a>
-                     <div class="postRow">
-                 <h4><a><%= allReviews[i].business %></a></h4>
-                  <span>Review by: <%= allReviews[i].userName %></span>
-                  <span><%= allReviews[i].description %></span>
-                   <form
-          action="/post/likePostInNewsfeed/<%= allReviews[i].id %>?_method=PUT"
-          method="POST"
-        >
-             <button value="<%=allReviews[i]._id%>" class="like" type="submit">❤️   
-              <span><%= allReviews[i].likes %></span>
-            </button>
-        </form>
-                      </div>
-                      <% if(allReviews[i].userName == user.userName){ %>
-                       <form
-          action="/post/deletePost/<%= allReviews[i].id %>?_method=DELETE"
-          method="POST">
-                      <button class="like" type="submit">🗑️</button>
-                         </form>
-                           <% } %>
-                </div>
-                <% }%>
-              </div>
+                <% for (let i = 0; i < allReviews.length; i++) { %>
+                    <div class="post <%= allReviews[i].hairType %>">
+                        <a class="postImage" href="/post/<%= allReviews[i]._id %>">
+                            <img class="img-fluid" src="<%= allReviews[i].image %>" alt="<%= allReviews[i].business %>" />
+                        </a>
+                        <div class="postRow <%= allReviews[i].hairType %>">
+                            <h4 class="businessName"><%= allReviews[i].business %></h4>
+                            <p class="reviewAuthor">Review by: <%= allReviews[i].userName %></p>
+                            <p class="<%= allReviews[i].hairType %>"> hair type: <%= allReviews[i].hairType %></p>
+                            <p><%= allReviews[i].description %></p>
+                            <form action="/post/likePostInNewsfeed/<%= allReviews[i]._id %>?_method=PUT" method="POST" class="likeReview">
+                                <button class="like" type="submit"> ❤️ Like <span><%= allReviews[i].likes %></span></button>
+                            </form> 
+                            <% if(allReviews[i].userName === user.userName){ %>
+                              <form action="/post/deletePost/<%= allReviews[i]._id %>?_method=DELETE" method="POST" class="deleteReview">
+                                  <button class="like" type="submit"> Delete 🗑️</button>
+                              </form>
+                          <% } %>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
             </div>
             <div class="profile-settings tab">
               <div class="account-setting">
@@ -160,8 +182,8 @@
                     <option>Curly (Type 4A)</option>
                     <option>Curly (Type 4B)</option>
                     <option>Curly (Type 4C)</option>
-                    <label for="problems">Problems</label>
                   </select>
+                  <label for="problems">Problems</label>
                   <select name="problems" multiple>
                     <option>Dry Hair</option>
                     <option>Tangled Hair</option>

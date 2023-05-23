@@ -8,11 +8,17 @@ const { getRecommendations } = require("../helpers/openai.js")
 module.exports = {
   getProfile: async (req, res) => {
     try {
+      console.log(req.query)
       const isABusinessAccount = req.user.accountType === 'business'
       if(isABusinessAccount){
         res.redirect('/business')
       }
-      const allReviews = await Post.find();
+      let allReviews = await Post.find();
+      if ("hairType" in req.query){
+        allReviews = allReviews.filter((review) => review.hairType === req.query.hairType)
+        console.log(allReviews)
+      }
+      
       const users = await User.find();
       const businesses = users.filter((user) => user.accountType === 'business');
       res.render("customer.ejs", { allReviews, user: req.user, businesses });
@@ -28,7 +34,7 @@ module.exports = {
       // ratings equals the medium or average number of each review's ratings
       let average = 1
       if (myReviews.length == 0){ 
-         average = 1
+        const average = 1
       }
       else {
         const ratings = myReviews.map((review) => review.rating)
@@ -67,6 +73,7 @@ module.exports = {
 
 
   createReview: async (req, res) => {
+    console.log(req.body)
     try {
       // Upload image to cloudinary
         const result = await cloudinary.uploader.upload(req.file.path);
@@ -84,7 +91,8 @@ module.exports = {
         userName: req.user.userName,
         businessId,
         business,
-        rating: Number(req.body.rating)
+        rating: Number(req.body.rating),
+        hairType: req.body.hairType,
       });
       console.log("Post has been added!");
       res.redirect("/profile");

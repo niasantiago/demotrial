@@ -181,7 +181,6 @@ button.createbtn {
   cursor: pointer;
   outline: none;
   margin-bottom: 10px;
-  transition: background 0.3s ease-in-out;
   box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
 }
 
@@ -368,12 +367,7 @@ button.createbtn i {
     font-size: 0.7rem;
   }
 }
-#see-more-bio,
-#see-less-bio {
-  color: blue;
-  cursor: pointer;
-  text-transform: lowercase;
-}
+
 .tab h1 {
   font-family: "Bree Serif", sans-serif;
   display: flex;
@@ -381,10 +375,6 @@ button.createbtn i {
   margin: 20px auto;
 }
 
-.profile-posts .like {
-background: transparent;
-border: none;
-}
 
 .posts{
     width:100%;
@@ -403,6 +393,49 @@ border: none;
 
 .post img{
 width:70%;
+} 
+.post .postRow{
+  display: flex;
+  gap: 5px;
+  align-items: baseline;
+  justify-content: center;
+  flex-direction: column;
+} 
+.posts {
+  max-width: 600px;
+}
+img {
+  max-width: 100%;
+}
+.post {
+  background: #FFF;
+  border: 1px solid #999;
+  font-size: 1em;
+  padding: 1em;
+  margin: 0;
+}
+.businessName {
+  font-size: 1em;
+  margin: 0 0 0.5em;
+  font-weight: bold; 
+}
+.reviewText {
+  gap: 1em;
+  display: flex;
+  margin: 0;
+}
+.reviewAuthor {
+  font-weight: bold;
+}
+.reviewText {
+  display: grid;
+  grid-template-columns: 6em 1fr 6em;
+}
+.reviewText p {
+  margin: 0;
+}
+.likeReview {
+  justify-self: end;
 }
 
 
@@ -475,13 +508,8 @@ html.modal-active, body.modal-active {
   stroke-dasharray: 778;
   stroke-dashoffset: 778;
 }
+/* news feed */
 
-.post .postRow{
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  justify-content: center;
-}
 
 /* form for hair type */
 @keyframes fadeIn {

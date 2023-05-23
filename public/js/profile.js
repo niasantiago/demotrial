@@ -51,14 +51,18 @@ tabs(0);
 
 function bioText() {
   bio.oldText = bio.innerText;
+  const hairFilter = document.getElementById("hair-filter-read")
+  console.log(`we love hair ${hairFilter}`)
+  hairFilter.addEventListener("change", handleHairFilterChange)
 
   bio.innerText = bio.innerText.substring(0, 100) + "...";
   bio.innerHTML += "<span onclick='addLength()' id='see-more-bio'>See More</span>";
 }
 
 bioText();
-
-function addLength() {
+console.log("hairFilter")
+function addLength() {  
+  console.log("hairFilter")
   bio.innerText = bio.oldText;
   bio.innerHTML += "&nbsp;" + "<span onclick='bioText()' id='see-less-bio'>See Less</span>";
   document.getElementById("see-less-bio").addEventListener("click", function() {
@@ -68,4 +72,24 @@ function addLength() {
 
 if (parseInt(document.querySelector(".alert-message").innerText) > 9) {
   document.querySelector(".alert-message").style.fontSize = ".7rem";
+} 
+// function hairFilter (){
+//   const hairFilter = document.getElementById("hair-filter-read")
+//   console.log(`we love hair ${hairFilter}`)
+//   hairFilter.addEventListener("change", handleHairFilterChange 
+//   );
+// }
+function handleHairFilterChange (event){
+  console.log("hair-filter-read");
+  let hairType = event.target.value
+  console.log(hairType)
+  const elements = document.getElementsByClassName("post");
+  console.log(elements) 
+  
+
+  window.location.href=`/profile?hairType=${hairType}`
+  const hairFilter = document.getElementById("hair-filter-read");
+  hairFilter.value = hairType;
 }
+  
+ 
