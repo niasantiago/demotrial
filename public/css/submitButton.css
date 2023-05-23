@@ -1,5 +1,7 @@
 .submitBtn {
-  position: absolute;
+  position: absolute; 
+  margin-top: 235px;
+  margin-left: 240px;
 }
 
 .btn-send {
