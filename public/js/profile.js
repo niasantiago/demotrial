@@ -91,5 +91,6 @@ function handleHairFilterChange (event){
   const hairFilter = document.getElementById("hair-filter-read");
   hairFilter.value = hairType;
 }
-  
+ 
+
  

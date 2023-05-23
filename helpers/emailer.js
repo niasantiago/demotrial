@@ -11,9 +11,13 @@ function useEmailer(personalizedEmail, emailAddress, userName){
     
     const options = {
         from: "niasantiago26@outlook.com",
-        to: "rio.a.castillo@gmail.com", // when done testing swap Rio's email for emailAddress 
+        to: `${emailAddress}`, // when done testing swap Rio's email for emailAddress 
         subject: `${userName}, Here's Your Recommendation!`,
-        html: personalizedEmail 
+        html: personalizedEmail + `
+       
+        If you thought this message was great here is my contact information: <a href=https://www.linkedin.com/in/nia-santiago->Nia's LinkedIn</a>
+        `
+
     
     }; 
     transporter.sendMail(options, function (err, info){
