@@ -158,7 +158,7 @@
                             </form> 
                             <% if(allReviews[i].userName === user.userName){ %>
                               <form action="/post/deletePost/<%= allReviews[i]._id %>?_method=DELETE" method="POST" class="deleteReview">
-                                  <button class="like" type="submit"> Delete 🗑️</button>
+                                  <button class="like" type="submit">Delete 🗑️</button>
                               </form>
                           <% } %>
                         </div>
@@ -170,8 +170,9 @@
               <div class="account-setting">
 
                 <h2>Tell us about your hair</h2>
-                <form action="/post/createRec" method="post">
-                  <label for="hair">Choose your Hair Type</label>
+                <form action="/post/createRec" method="post"> 
+                  <label for="hair">Choose your Hair Type</label> 
+                  <div class="hairRec"></div>
                   <select name="hair">
                     <option>Curly (Type 2A)</option>
                     <option>Curly (Type 2B)</option>
@@ -196,10 +197,11 @@
                     <option>Healthy Ends</option>
                     <option>Moisture</option>
                     <option>Volume</option>
-                  </select>
+                  </select> 
+                  </div>
                   <div class="submitBtn">
-  <button type="submit" class="btn-send" data-label="Send" data-success="Sent!"></button>  
-</div>
+                    <button type="submit" class="btn-send" data-label="Send" data-success="Sent!"></button>  
+                  </div>
                 </form>
               </div>
             </div>
