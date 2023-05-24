@@ -13,7 +13,8 @@
   </head>
   <html>
   <body>
-    <!-- pop up modal -->
+    <!-- pop up modal --> 
+    <title>Hair Hub</title>
     <div id="popup2" class="overlay light">
 	<a class="cancel" href="#"></a>
 	<div class="popup">
@@ -77,20 +78,10 @@
           <div class="profile-side">
             <div class="user-bio">
               <span><%=user.userName %></span>
-              <h3>Your Bio</h3>
+              <h3>Bio:</h3>
               <p class="bio">
-                Lorem ipsum dolor sit amet, hello how consectetur adipisicing
-                elit. Sint consectetur provident magni yohoho consequuntur,
-                voluptatibus ghdfff exercitationem at quis similique. Optio,
-                amet!
+                Hello! I'm a hair enthusiast sharing my thoughts on this amazing hair app. 💁‍♀️💇‍♂️ From product reviews to styling tips, I've got you covered! Let's connect and spread the #HairLove together. Join me on this exciting journey to embrace #GoodHairDays and unlock the secrets to gorgeous locks! 🌟💆‍♀️ #HairApp #ReviewQueen
               </p>
-            </div>
-            <div class="profile-btn">
-              <a class="button" href="#popup2">
-              <button class="createbtn" id="five">
-                REVIEW A PAGE
-              </button>
-              </a>
             </div> 
             <div class="mb-3"> 
               <label for="hair-filter" class="form-label">Filter page by hairtype</label>
@@ -107,6 +98,13 @@
                 <option <%= hairType === '4C' ? 'selected' : '' %> value="4C">Curly (Type 4C)</option>
             </select> 
             </div>
+            <div class="profile-btn">
+              <a class="button" href="#popup2">
+              <button class="createbtn" id="five">
+                REVIEW A PAGE
+              </button>
+              </a>
+            </div> 
              <div class="profile-btn">
               <a class="button" href="/logout">
               <button class="createbtn" id="five">
@@ -156,9 +154,8 @@
               <div class="account-setting">
 
                 <h2>Tell us about your hair</h2>
-                <form action="/post/createRec" method="post"> 
-                  <label for="hair">Choose your Hair Type</label> 
-                  <div class="hairRec"></div>
+                <form action="/post/createRec" method="post">
+                  <label for="hair">Choose your Hair Type</label>
                   <select name="hair">
                     <option>Curly (Type 2A)</option>
                     <option>Curly (Type 2B)</option>
@@ -170,21 +167,22 @@
                     <option>Curly (Type 4B)</option>
                     <option>Curly (Type 4C)</option>
                   </select>
+                
                   <label for="problems">Problems</label>
-                  <select name="problems" multiple>
-                    <option>Dry Hair</option>
-                    <option>Tangled Hair</option>
-                    <option>Split Ends</option>
-                    <option>Balding</option>
+                  <select name="problems" id="problems" multiple>
+                    <option value="dry-hair">Dry Hair</option>
+                    <option value="tangled-hair">Tangled Hair</option>
+                    <option value="split-ends">Split Ends</option>
+                    <option value="balding">Balding</option>
                   </select>
+                  
                   <label for="goals">Goals</label>
-                  <select name="goals" multiple>
-                    <option>Hair Growth</option>
-                    <option>Healthy Ends</option>
-                    <option>Moisture</option>
-                    <option>Volume</option>
-                  </select> 
-                  </div>
+                  <select name="goals" id="goals" multiple>
+                    <option value="hair-growth">Hair Growth</option>
+                    <option value="healthy-ends">Healthy Ends</option>
+                    <option value="moisture">Moisture</option>
+                    <option value="volume">Volume</option>
+                  </select>
                   <div class="submitBtn">
                     <button type="submit" class="btn-send" data-label="Send" data-success="Sent!"></button>  
                   </div>
