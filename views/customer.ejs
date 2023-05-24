@@ -84,7 +84,7 @@
               </p>
             </div> 
             <div class="mb-3"> 
-              <label for="hair-filter" class="form-label">Filter page by hairtype</label>
+              <label for="hair-filter" class="form-label">Filter page by hairtype:</label>
               <select name="hair-filter" id="hair-filter-read">
                 <option value=""></option>
                 <option <%= hairType === '2A' ? 'selected' : '' %> value="2A">Curly (Type 2A)</option>
@@ -167,7 +167,6 @@
                     <option>Curly (Type 4B)</option>
                     <option>Curly (Type 4C)</option>
                   </select>
-                
                   <label for="problems">Problems</label>
                   <select name="problems" id="problems" multiple>
                     <option value="dry-hair">Dry Hair</option>
@@ -175,7 +174,6 @@
                     <option value="split-ends">Split Ends</option>
                     <option value="balding">Balding</option>
                   </select>
-                  
                   <label for="goals">Goals</label>
                   <select name="goals" id="goals" multiple>
                     <option value="hair-growth">Hair Growth</option>

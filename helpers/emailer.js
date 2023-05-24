@@ -15,7 +15,7 @@ function useEmailer(personalizedEmail, emailAddress, userName){
         subject: `${userName}, Here's Your Recommendation!`,
         html: personalizedEmail + `
        
-        If you thought this message was great here is my contact information: <a href=https://www.linkedin.com/in/nia-santiago->Nia's LinkedIn</a>
+        If you found value in this message and would like to connect further, I welcome the opportunity to engage. Please feel free to reach out to me <a href=https://www.linkedin.com/in/nia-santiago->Nia's LinkedIn</a> I look forward to connecting and exploring potential opportunities together! 
         `
 
     

@@ -8,7 +8,7 @@
 }
 
 body {
-  background:#FFFAA0;
+  background:#FFFFF0;
   overflow-x: hidden;
   padding-top: 90px;
   font-family: "Poppins", sans-serif;
@@ -338,9 +338,6 @@ button.createbtn i {
     margin: ;
   }
 
-  .profile-header h3 {
-  }
-
   .profile-option {
     width: 30px;
     height: 30px;
@@ -408,11 +405,12 @@ img {
   max-width: 100%;
 }
 .post {
-  background: #FFF;
-  border: 1px solid #999;
+  background:#FFFFF0;
+  border: 1px solid#DAA520;
   font-size: 1em;
   padding: 1em;
-  margin: 0;
+  margin: 0; 
+  box-shadow:2px 2px #DAA520 ;
 }
 .businessName {
   font-size: 1em;

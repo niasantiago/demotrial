@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+} 
+body {
+    background-color: #FFFDD0 ;
+}
+.btn.btn-primary {
+    border: 1px solid #DAA520;
+    text-decoration: none;
+    color: black;
+    background-color: #FAD5A5;
+} 
+
+.img {
+    border: 2px solid #DAA520;
+    width:38%; 
+    background-color: white;
+    display:flex; 
+    align-items: center;
+    flex-direction: column;
+} 
+
