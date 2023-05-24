@@ -44,6 +44,7 @@ const PostSchema = new mongoose.Schema({
   },
   hairType: {
     type: String,
+    required:true, 
   },
   
 });

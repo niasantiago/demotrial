@@ -21,7 +21,9 @@ module.exports = {
       
       const users = await User.find();
       const businesses = users.filter((user) => user.accountType === 'business');
-      res.render("customer.ejs", { allReviews, user: req.user, businesses, hairType:req.query.hairType });
+      console.log(req.query)
+      res.render("customer.ejs", { allReviews, user: req.user, businesses, hairType:req.query.hair });
+      
     } catch (err) {
       console.log(err);
     }
@@ -92,7 +94,7 @@ module.exports = {
         businessId,
         business,
         rating: Number(req.body.rating),
-        hairType: req.body.hairType,
+        hairType: req.body.hair,
       });
       console.log("Post has been added!");
       res.redirect("/profile");
